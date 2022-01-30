@@ -60,7 +60,7 @@ public:
         void set_steps_per_circular_range(uint32_t value) { steps_per_circular_range = value > 0 ? value : steps_per_circular_range; }
     };
 
-    
+
     bool apply_config();
 
     void reset();
@@ -75,7 +75,7 @@ public:
     // Trajectory-Planned control
     void move_to_pos(float goal_point);
     void move_incremental(float displacement, bool from_goal_point);
-    
+
     // TODO: make this more similar to other calibration loops
     void start_anticogging_calibration();
     bool anticogging_calibration(float pos_estimate, float vel_estimate);
@@ -93,7 +93,7 @@ public:
     InputPort<float> pos_estimate_linear_src_;
     InputPort<float> pos_estimate_circular_src_;
     InputPort<float> vel_estimate_src_;
-    InputPort<float> pos_wrap_src_; 
+    InputPort<float> pos_wrap_src_;
 
     float pos_setpoint_ = 0.0f; // [turns]
     float vel_setpoint_ = 0.0f; // [turn/s]
@@ -101,6 +101,7 @@ public:
     float vel_integrator_torque_ = 0.0f;    // [Nm]
     float torque_setpoint_ = 0.0f;  // [Nm]
 
+    float input_pos_goto_ = 0.0f; // [turns] - set goto position and wait for trigger to go
     float input_pos_ = 0.0f;     // [turns]
     float input_vel_ = 0.0f;     // [turn/s]
     float input_torque_ = 0.0f;  // [Nm]
@@ -109,9 +110,9 @@ public:
 
     Autotuning_t autotuning_;
     float autotuning_phase_ = 0.0f;
-    
+
     bool input_pos_updated_ = false;
-    
+
     bool trajectory_done_ = true;
 
     bool anticogging_valid_ = false;
