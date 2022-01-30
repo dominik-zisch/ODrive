@@ -35,6 +35,27 @@ class CANSimple {
         MSG_SET_LINEAR_COUNT,
         MSG_SET_POS_GAIN,
         MSG_SET_VEL_GAINS,
+        MSG_SET_INPUT_GOTO_POS,
+        MSG_TRIGGER_GOTO_POS,
+        MSG_SET_BOARD_CONFIG,
+        MSG_SET_AXIS_CONFIG,
+        MSG_SET_MOTOR_CONFIG_A,
+        MSG_SET_MOTOR_CONFIG_B,
+        MSG_SET_MOTOR_CONFIG_C,
+        MSG_SET_MOTOR_CONFIG_D,
+        MSG_SET_MOTOR_CONFIG_E,
+        MSG_SET_MOTOR_CONFIG_F,
+        MSG_SET_MOTOR_CONFIG_G,
+        MSG_SET_CONTROLLER_CONFIG_A,
+        MSG_SET_CONTROLLER_CONFIG_B,
+        MSG_SET_CONTROLLER_CONFIG_C,
+        MSG_SET_CONTROLLER_CONFIG_D,
+        MSG_SET_ENCODER_CONFIG_A,
+        MSG_SET_ENCODER_CONFIG_B,
+        MSG_SET_ENCODER_CONFIG_C,
+        MSG_SET_ENCODER_CONFIG_D,
+        MSG_SET_ENCODER_CONFIG_E,
+
         MSG_CO_HEARTBEAT_CMD = 0x700,  // CANOpen NMT Heartbeat  SEND
     };
 
@@ -51,7 +72,7 @@ class CANSimple {
     void handle_can_message(const can_Message_t& msg);
 
     void do_command(Axis& axis, const can_Message_t& cmd);
-    
+
     // Get functions (msg.rtr bit must be set)
     bool get_motor_error_callback(const Axis& axis);
     bool get_encoder_error_callback(const Axis& axis);
@@ -78,6 +99,26 @@ class CANSimple {
     static void set_linear_count_callback(Axis& axis, const can_Message_t& msg);
     static void set_pos_gain_callback(Axis& axis, const can_Message_t& msg);
     static void set_vel_gains_callback(Axis& axis, const can_Message_t& msg);
+    static void set_input_goto_pos_callback(Axis& axis, const can_Message_t& msg);
+    static void trigger_goto_pos_callback(Axis& axis, const can_Message_t& msg);
+    static void set_board_config_callback(Axis& axis, const can_Message_t& msg);
+    static void set_axis_config_callback(Axis& axis, const can_Message_t& msg);
+    static void set_motor_config_a_callback(Axis& axis, const can_Message_t& msg);
+    static void set_motor_config_b_callback(Axis& axis, const can_Message_t& msg);
+    static void set_motor_config_c_callback(Axis& axis, const can_Message_t& msg);
+    static void set_motor_config_d_callback(Axis& axis, const can_Message_t& msg);
+    static void set_motor_config_e_callback(Axis& axis, const can_Message_t& msg);
+    static void set_motor_config_f_callback(Axis& axis, const can_Message_t& msg);
+    static void set_motor_config_g_callback(Axis& axis, const can_Message_t& msg);
+    static void set_controller_config_a_callback(Axis& axis, const can_Message_t& msg);
+    static void set_controller_config_b_callback(Axis& axis, const can_Message_t& msg);
+    static void set_controller_config_c_callback(Axis& axis, const can_Message_t& msg);
+    static void set_controller_config_d_callback(Axis& axis, const can_Message_t& msg);
+    static void set_encoder_config_a_callback(Axis& axis, const can_Message_t& msg);
+    static void set_encoder_config_b_callback(Axis& axis, const can_Message_t& msg);
+    static void set_encoder_config_c_callback(Axis& axis, const can_Message_t& msg);
+    static void set_encoder_config_d_callback(Axis& axis, const can_Message_t& msg);
+    static void set_encoder_config_e_callback(Axis& axis, const can_Message_t& msg);
 
     // Other functions
     static void nmt_callback(const Axis& axis, const can_Message_t& msg);
