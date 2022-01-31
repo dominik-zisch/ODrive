@@ -37,6 +37,7 @@ class CANSimple {
         MSG_SET_VEL_GAINS,
         MSG_SET_INPUT_GOTO_POS,
         MSG_TRIGGER_GOTO_POS,
+        MSG_GET_ADC_VOLTAGE,
         MSG_SET_BOARD_CONFIG,
         MSG_SET_AXIS_CONFIG,
         MSG_SET_MOTOR_CONFIG_A,
@@ -83,6 +84,7 @@ class CANSimple {
     bool get_iq_callback(const Axis& axis);
     bool get_sensorless_estimates_callback(const Axis& axis);
     bool get_vbus_voltage_callback(const Axis& axis);
+    bool get_adc_voltage_callback(const Axis& axis);
 
     // Set functions
     static void set_axis_nodeid_callback(Axis& axis, const can_Message_t& msg);

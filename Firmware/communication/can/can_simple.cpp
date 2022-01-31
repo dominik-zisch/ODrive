@@ -161,6 +161,9 @@ void CANSimple::do_command(Axis& axis, const can_Message_t& msg) {
         case MSG_TRIGGER_GOTO_POS:
             trigger_goto_pos_callback(axis, msg);
             break;
+        case MSG_GET_ADC_VOLTAGE:
+            get_adc_voltage_callback(axis, msg);
+            break;
         case MSG_SET_BOARD_CONFIG:
             set_board_config_callback(axis, msg);
             break;
@@ -540,6 +543,24 @@ bool CANSimple::get_vbus_voltage_callback(const Axis& axis) {
 
     return canbus_->send_message(txmsg);
 }
+
+bool CANSimple::get_adc_voltage_callback(const Axis& axis) {
+    can_Message_t txmsg;
+
+    txmsg.id = axis.config_.can.node_id << NUM_CMD_ID_BITS;
+    txmsg.id += MSG_GET_ADC_VOLTAGE;
+    txmsg.isExt = axis.config_.can.is_extended;
+    txmsg.len = 8;
+
+    float adc_voltage = odrv.get_adc_voltage(1);
+    uint32_t floatBytes;
+    static_assert(sizeof(adc_voltage) == sizeof(floatBytes));
+    can_setSignal<float>(txmsg, adc_voltage, 0, 32, true);
+
+    return canbus_->send_message(txmsg);
+}
+
+
 
 void CANSimple::clear_errors_callback(Axis& axis, const can_Message_t& msg) {
     odrv.clear_errors();  // TODO: might want to clear axis errors only
