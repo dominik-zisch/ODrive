@@ -163,7 +163,7 @@ void CANSimple::do_command(Axis& axis, const can_Message_t& msg) {
             break;
         case MSG_GET_ADC_VOLTAGE:
             if (msg.rtr)
-                get_adc_voltage_callback(axis, msg);
+                get_adc_voltage_callback(axis);
             break;
         case MSG_SET_CALIBRATION_CURRENT:
             set_calibration_current_callback(axis, msg);
