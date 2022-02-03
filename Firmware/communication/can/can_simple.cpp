@@ -165,6 +165,39 @@ void CANSimple::do_command(Axis& axis, const can_Message_t& msg) {
             if (msg.rtr)
                 get_adc_voltage_callback(axis, msg);
             break;
+        case MSG_SET_CALIBRATION_CURRENT:
+            set_calibration_current_callback(axis, msg);
+            break;
+        case MSG_PLACEHOLDER_0:
+            set_placeholder_0_callback(axis, msg);
+            break;
+        case MSG_PLACEHOLDER_1:
+            set_placeholder_1_callback(axis, msg);
+            break;
+        case MSG_PLACEHOLDER_2:
+            set_placeholder_2_callback(axis, msg);
+            break;
+        case MSG_PLACEHOLDER_3:
+            set_placeholder_3_callback(axis, msg);
+            break;
+        case MSG_PLACEHOLDER_4:
+            set_placeholder_4_callback(axis, msg);
+            break;
+        case MSG_PLACEHOLDER_5:
+            set_placeholder_5_callback(axis, msg);
+            break;
+        case MSG_PLACEHOLDER_6:
+            set_placeholder_6_callback(axis, msg);
+            break;
+        case MSG_PLACEHOLDER_7:
+            set_placeholder_7_callback(axis, msg);
+            break;
+        case MSG_PLACEHOLDER_8:
+            set_placeholder_8_callback(axis, msg);
+            break;
+        case MSG_PLACEHOLDER_9:
+            set_placeholder_9_callback(axis, msg);
+            break;
         case MSG_SET_BOARD_CONFIG:
             set_board_config_callback(axis, msg);
             break;
@@ -384,6 +417,21 @@ void CANSimple::trigger_goto_pos_callback(Axis& axis, const can_Message_t& msg) 
     axis.controller_.input_pos_ = axis.controller_.input_pos_goto_;
     axis.controller_.input_pos_updated();
 }
+
+void CANSimple::set_calibration_current_callback(Axis& axis, const can_Message_t& msg) {
+    axis.motor_.config_.calibration_current = can_getSignal<float>(msg, 0, 32, true);
+}
+
+void CANSimple::set_placeholder_0_callback(Axis& axis, const can_Message_t& msg) {}
+void CANSimple::set_placeholder_1_callback(Axis& axis, const can_Message_t& msg) {}
+void CANSimple::set_placeholder_2_callback(Axis& axis, const can_Message_t& msg) {}
+void CANSimple::set_placeholder_3_callback(Axis& axis, const can_Message_t& msg) {}
+void CANSimple::set_placeholder_4_callback(Axis& axis, const can_Message_t& msg) {}
+void CANSimple::set_placeholder_5_callback(Axis& axis, const can_Message_t& msg) {}
+void CANSimple::set_placeholder_6_callback(Axis& axis, const can_Message_t& msg) {}
+void CANSimple::set_placeholder_7_callback(Axis& axis, const can_Message_t& msg) {}
+void CANSimple::set_placeholder_8_callback(Axis& axis, const can_Message_t& msg) {}
+void CANSimple::set_placeholder_9_callback(Axis& axis, const can_Message_t& msg) {}
 
 void CANSimple::set_board_config_callback(Axis& axis, const can_Message_t& msg) {
     // TODO check if this is correct

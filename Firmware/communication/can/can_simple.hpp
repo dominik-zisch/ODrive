@@ -38,6 +38,17 @@ class CANSimple {
         MSG_SET_INPUT_GOTO_POS,
         MSG_TRIGGER_GOTO_POS,
         MSG_GET_ADC_VOLTAGE,
+        MSG_SET_CALIBRATION_CURRENT,
+        MSG_PLACEHOLDER_0,
+        MSG_PLACEHOLDER_1,
+        MSG_PLACEHOLDER_2,
+        MSG_PLACEHOLDER_3,
+        MSG_PLACEHOLDER_4,
+        MSG_PLACEHOLDER_5,
+        MSG_PLACEHOLDER_6,
+        MSG_PLACEHOLDER_7,
+        MSG_PLACEHOLDER_8,
+        MSG_PLACEHOLDER_9,
         MSG_SET_BOARD_CONFIG,
         MSG_SET_AXIS_CONFIG,
         MSG_SET_MOTOR_CONFIG_A,
@@ -103,6 +114,17 @@ class CANSimple {
     static void set_vel_gains_callback(Axis& axis, const can_Message_t& msg);
     static void set_input_goto_pos_callback(Axis& axis, const can_Message_t& msg);
     static void trigger_goto_pos_callback(Axis& axis, const can_Message_t& msg);
+    static void set_calibration_current_callback(Axis& axis, const can_Message_t& msg);
+    static void set_placeholder_0_callback(Axis& axis, const can_Message_t& msg);
+    static void set_placeholder_1_callback(Axis& axis, const can_Message_t& msg);
+    static void set_placeholder_2_callback(Axis& axis, const can_Message_t& msg);
+    static void set_placeholder_3_callback(Axis& axis, const can_Message_t& msg);
+    static void set_placeholder_4_callback(Axis& axis, const can_Message_t& msg);
+    static void set_placeholder_5_callback(Axis& axis, const can_Message_t& msg);
+    static void set_placeholder_6_callback(Axis& axis, const can_Message_t& msg);
+    static void set_placeholder_7_callback(Axis& axis, const can_Message_t& msg);
+    static void set_placeholder_8_callback(Axis& axis, const can_Message_t& msg);
+    static void set_placeholder_9_callback(Axis& axis, const can_Message_t& msg);
     static void set_board_config_callback(Axis& axis, const can_Message_t& msg);
     static void set_axis_config_callback(Axis& axis, const can_Message_t& msg);
     static void set_motor_config_a_callback(Axis& axis, const can_Message_t& msg);
