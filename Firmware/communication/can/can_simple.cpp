@@ -162,7 +162,8 @@ void CANSimple::do_command(Axis& axis, const can_Message_t& msg) {
             trigger_goto_pos_callback(axis, msg);
             break;
         case MSG_GET_ADC_VOLTAGE:
-            get_adc_voltage_callback(axis, msg);
+            if (msg.rtr)
+                get_adc_voltage_callback(axis, msg);
             break;
         case MSG_SET_BOARD_CONFIG:
             set_board_config_callback(axis, msg);
